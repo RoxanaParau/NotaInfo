@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UniversityModelStoreContainer">
+    <EntitySet Name="Departments" EntityType="UniversityModel.Store.Departments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Grade" EntityType="UniversityModel.Store.Grade" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Labs" EntityType="UniversityModel.Store.Labs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfessorPerLab" EntityType="UniversityModel.Store.ProfessorPerLab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="UniversityModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudyYears" EntityType="UniversityModel.Store.StudyYears" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="UniversityModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Grade_Labs" Association="UniversityModel.Store.FK_Grade_Labs">
+      <End Role="Labs" EntitySet="Labs" />
+      <End Role="Grade" EntitySet="Grade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grade_Professors" Association="UniversityModel.Store.FK_Grade_Professors">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Grade" EntitySet="Grade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grade_Students" Association="UniversityModel.Store.FK_Grade_Students">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Grade" EntitySet="Grade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Labs_StudyYears" Association="UniversityModel.Store.FK_Labs_StudyYears">
+      <End Role="StudyYears" EntitySet="StudyYears" />
+      <End Role="Labs" EntitySet="Labs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessorPerLab_Labs" Association="UniversityModel.Store.FK_ProfessorPerLab_Labs">
+      <End Role="Labs" EntitySet="Labs" />
+      <End Role="ProfessorPerLab" EntitySet="ProfessorPerLab" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessorPerLab_Professor" Association="UniversityModel.Store.FK_ProfessorPerLab_Professor">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ProfessorPerLab" EntitySet="ProfessorPerLab" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyYears_Departments" Association="UniversityModel.Store.FK_StudyYears_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="StudyYears" EntitySet="StudyYears" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="UniversityModel.Store.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Budget" Type="money" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="Administrator" Type="int" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="ProfessorId" Type="int" />
+    <Property Name="LabId" Type="int" />
+    <Property Name="GradeLab1" Type="float" />
+    <Property Name="GradeLab2" Type="float" />
+    <Property Name="GradeLab3" Type="float" />
+    <Property Name="GradeLab4" Type="float" />
+    <Property Name="GradeLab5" Type="float" />
+    <Property Name="GradeLab6" Type="float" />
+    <Property Name="GradeLab7" Type="float" />
+    <Property Name="GradeLab8" Type="float" />
+    <Property Name="GradeLab9" Type="float" />
+    <Property Name="GradeLab10" Type="float" />
+    <Property Name="GradeLab11" Type="float" />
+    <Property Name="GradeLab12" Type="float" />
+    <Property Name="GradeLab13" Type="float" />
+    <Property Name="GradeLab14" Type="float" />
+    <Property Name="FinaleGrade" Type="float" />
+  </EntityType>
+  <EntityType Name="Labs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="StudyYearId" Type="int" />
+  </EntityType>
+  <EntityType Name="ProfessorPerLab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProfessorId" Type="int" />
+    <Property Name="LabId" Type="int" />
+    <Property Name="Formula" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="StudyYears">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="YearOfStudy" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepartmentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="HireDate" Type="datetime" />
+    <Property Name="EnrollmentDate" Type="datetime" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Grade_Labs">
+    <End Role="Labs" Type="UniversityModel.Store.Labs" Multiplicity="0..1" />
+    <End Role="Grade" Type="UniversityModel.Store.Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Labs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="LabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grade_Professors">
+    <End Role="Users" Type="UniversityModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Grade" Type="UniversityModel.Store.Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="ProfessorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grade_Students">
+    <End Role="Users" Type="UniversityModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Grade" Type="UniversityModel.Store.Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Labs_StudyYears">
+    <End Role="StudyYears" Type="UniversityModel.Store.StudyYears" Multiplicity="0..1" />
+    <End Role="Labs" Type="UniversityModel.Store.Labs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyYears">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Labs">
+        <PropertyRef Name="StudyYearId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessorPerLab_Labs">
+    <End Role="Labs" Type="UniversityModel.Store.Labs" Multiplicity="0..1" />
+    <End Role="ProfessorPerLab" Type="UniversityModel.Store.ProfessorPerLab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Labs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfessorPerLab">
+        <PropertyRef Name="LabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessorPerLab_Professor">
+    <End Role="Users" Type="UniversityModel.Store.Users" Multiplicity="0..1" />
+    <End Role="ProfessorPerLab" Type="UniversityModel.Store.ProfessorPerLab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ProfessorPerLab">
+        <PropertyRef Name="ProfessorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyYears_Departments">
+    <End Role="Departments" Type="UniversityModel.Store.Departments" Multiplicity="0..1" />
+    <End Role="StudyYears" Type="UniversityModel.Store.StudyYears" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="StudyYears">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="UniversityModel.Store.Roles" Multiplicity="0..1" />
+    <End Role="Users" Type="UniversityModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

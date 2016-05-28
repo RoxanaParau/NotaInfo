@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fcabbda01cdb4484a1b848e7f0b18824" Name="Diagram1">
+        <EntityTypeShape EntityType="UniversityModel.Department" Width="1.5" PointX="5.375" PointY="0.5" />
+        <EntityTypeShape EntityType="UniversityModel.Role" Width="1.5" PointX="7.875" PointY="0.5" />
+        <EntityTypeShape EntityType="UniversityModel.User" Width="1.5" PointX="8" PointY="3" />
+        <AssociationConnector Association="UniversityModel.FK_Users_Roles" />
+        <EntityTypeShape EntityType="UniversityModel.Lab" Width="1.5" PointX="0.625" PointY="0.5" />
+        <EntityTypeShape EntityType="UniversityModel.StudyYear" Width="1.5" PointX="2.875" PointY="0.5" />
+        <AssociationConnector Association="UniversityModel.FK_StudyYears_Departments" />
+        <AssociationConnector Association="UniversityModel.FK_Labs_StudyYears" />
+        <EntityTypeShape EntityType="UniversityModel.ProfessorPerLab" Width="1.5" PointX="0.875" PointY="3.125" />
+        <AssociationConnector Association="UniversityModel.FK_ProfessorPerLab_Labs" />
+        <AssociationConnector Association="UniversityModel.FK_ProfessorPerLab_Professor" />
+        <EntityTypeShape EntityType="UniversityModel.Grade" Width="1.5" PointX="5.125" PointY="3.875" />
+        <AssociationConnector Association="UniversityModel.FK_Grade_Labs" />
+        <AssociationConnector Association="UniversityModel.FK_Grade_Professors" />
+        <AssociationConnector Association="UniversityModel.FK_Grade_Students" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
