@@ -20,7 +20,7 @@
                     HeaderStyle-BackColor="green" AllowPaging="true" ShowFooter="true"
                    OnRowEditing="ProfessorsGridView_RowEditing"
                     OnRowUpdating="ProfessorsGridView_RowUpdating" OnRowCancelingEdit="ProfessorsGridView_RowCancelingEdit"
-                    PageSize="10">
+                    PageSize="10" OnDataBinding="ProfessorsGridView_DataBinding" OnDataBound="ProfessorsGridView_DataBound">
                     <Columns>
                         <asp:TemplateField ItemStyle-Width="30px" HeaderText="ProfessorID">
                             <ItemTemplate>

@@ -54,5 +54,15 @@ namespace NotaInfo
             ProfessorsGridView.DataSource = universityBL.GetProfessors();
             ProfessorsGridView.DataBind();
         }
+
+        protected void ProfessorsGridView_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ProfessorsGridView_DataBound(object sender, EventArgs e)
+        {
+
+        }
     }
 }
