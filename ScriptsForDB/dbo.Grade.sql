@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Grade] (
+    [Id]          INT        NOT NULL,
+    [StudentId]   INT        NULL,
+    [ProfessorId] INT        NULL,
+    [LabId]       INT        NULL,
+    [GradeLab1]   FLOAT (53) NULL,
+    [GradeLab2]   FLOAT (53) NULL,
+    [GradeLab3]   FLOAT (53) NULL,
+    [GradeLab4]   FLOAT (53) NULL,
+    [GradeLab5]   FLOAT (53) NULL,
+    [GradeLab6]   FLOAT (53) NULL,
+    [GradeLab7]   FLOAT (53) NULL,
+    [GradeLab8]   FLOAT (53) NULL,
+    [GradeLab9]   FLOAT (53) NULL,
+    [GradeLab10]  FLOAT (53) NULL,
+    [GradeLab11]  FLOAT (53) NULL,
+    [GradeLab12]  FLOAT (53) NULL,
+    [GradeLab13]  FLOAT (53) NULL,
+    [GradeLab14]  FLOAT (53) NULL,
+    [FinaleGrade] FLOAT (53) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Grade_Students] FOREIGN KEY ([StudentId]) REFERENCES [dbo].[Users] ([UserID]),
+    CONSTRAINT [FK_Grade_Professors] FOREIGN KEY ([ProfessorId]) REFERENCES [dbo].[Users] ([UserID]),
+    CONSTRAINT [FK_Grade_Labs] FOREIGN KEY ([LabId]) REFERENCES [dbo].[Labs] ([Id])
+);
+

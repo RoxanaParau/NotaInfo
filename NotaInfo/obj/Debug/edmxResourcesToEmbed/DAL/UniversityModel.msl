@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UniversityModelStoreContainer" CdmEntityContainer="UniversityEntities">
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="UniversityModel.Department">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="Administrator" ColumnName="Administrator" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="UniversityModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users1">
+      <EntityTypeMapping TypeName="UniversityModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Labs">
+      <EntityTypeMapping TypeName="UniversityModel.Lab">
+        <MappingFragment StoreEntitySet="Labs">
+          <ScalarProperty Name="StudyYearId" ColumnName="StudyYearId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudyYears">
+      <EntityTypeMapping TypeName="UniversityModel.StudyYear">
+        <MappingFragment StoreEntitySet="StudyYears">
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="YearOfStudy" ColumnName="YearOfStudy" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfessorPerLabs">
+      <EntityTypeMapping TypeName="UniversityModel.ProfessorPerLab">
+        <MappingFragment StoreEntitySet="ProfessorPerLab">
+          <ScalarProperty Name="Formula" ColumnName="Formula" />
+          <ScalarProperty Name="LabId" ColumnName="LabId" />
+          <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="UniversityModel.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="FinaleGrade" ColumnName="FinaleGrade" />
+          <ScalarProperty Name="GradeLab14" ColumnName="GradeLab14" />
+          <ScalarProperty Name="GradeLab13" ColumnName="GradeLab13" />
+          <ScalarProperty Name="GradeLab12" ColumnName="GradeLab12" />
+          <ScalarProperty Name="GradeLab11" ColumnName="GradeLab11" />
+          <ScalarProperty Name="GradeLab10" ColumnName="GradeLab10" />
+          <ScalarProperty Name="GradeLab9" ColumnName="GradeLab9" />
+          <ScalarProperty Name="GradeLab8" ColumnName="GradeLab8" />
+          <ScalarProperty Name="GradeLab7" ColumnName="GradeLab7" />
+          <ScalarProperty Name="GradeLab6" ColumnName="GradeLab6" />
+          <ScalarProperty Name="GradeLab5" ColumnName="GradeLab5" />
+          <ScalarProperty Name="GradeLab4" ColumnName="GradeLab4" />
+          <ScalarProperty Name="GradeLab3" ColumnName="GradeLab3" />
+          <ScalarProperty Name="GradeLab2" ColumnName="GradeLab2" />
+          <ScalarProperty Name="GradeLab1" ColumnName="GradeLab1" />
+          <ScalarProperty Name="LabId" ColumnName="LabId" />
+          <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
