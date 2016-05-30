@@ -89,12 +89,12 @@ namespace NotaInfo.BLL
             return universityRepository.GetProfessorByName(nameSearchString);
         }
 
-        public void InsertProfessor(User prof)
+        public int InsertProfessor(User prof)
         {
 
             try
             {
-                universityRepository.InsertProfessor(prof);
+                return universityRepository.InsertProfessor(prof);
             }
             catch (Exception ex)
             {
@@ -137,6 +137,46 @@ namespace NotaInfo.BLL
 
         }
 
+
+        public IEnumerable<Lab> GetLabs()
+        {
+            return universityRepository.GetLabs();
+        }
+
+        public IEnumerable<ProfessorPerLab> GetProfsPerLabs(int profID)
+        {
+            return universityRepository.GetProfessorPerLabByProfId(profID);
+        }
+        public void UpdateProfPerLab(int profId, List<int> labsIds)
+        {
+
+            try
+            {
+                universityRepository.UpdateProfPerLab(profId,labsIds);
+            }
+            catch (Exception ex)
+            {
+                //Include catch blocks for specific exceptions first, 
+                //and handle or log the error as appropriate in each. 
+                //Include a generic catch block like this one last. 
+                throw ex;
+            }
+        }
+
+        public void InsertProfPerLab(int profId, List<int> labsIds){
+
+            try
+            {
+                universityRepository.InsertProfPerLab(profId, labsIds);
+            }
+            catch (Exception ex)
+            {
+                //Include catch blocks for specific exceptions first, 
+                //and handle or log the error as appropriate in each. 
+                //Include a generic catch block like this one last. 
+                throw ex;
+            }
+        }
         private bool disposedValue = false;
 
         protected virtual void Dispose(bool disposing)

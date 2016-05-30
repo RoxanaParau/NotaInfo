@@ -108,7 +108,7 @@ namespace NotaInfo.DAL
             return context.Users1.Where(p => (p.LastName.Contains(nameSearchString) || p.FirstName.Contains(nameSearchString)) && p.RoleId == professorRoleID).OrderBy(p => p.LastName);
         }
 
-        public void InsertProfessor(User professor)
+        public int InsertProfessor(User professor)
         {
             try
             {
@@ -116,6 +116,7 @@ namespace NotaInfo.DAL
                 professor.RoleId = professorRoleID;
                 context.Users1.Add(professor);
                 context.SaveChanges();
+                return professor.UserID;
             }
             catch (Exception ex)
             {
@@ -331,7 +332,7 @@ namespace NotaInfo.DAL
         {
             try
             {
-              
+
                 context.Labs.Add(lab);
                 context.SaveChanges();
             }
@@ -394,8 +395,86 @@ namespace NotaInfo.DAL
             }
             return maxDepartmentID;
         }
-
+        private Int32 GenerateProfPerLabID()
+        {
+            Int32 maxID = 0;
+            var profPerLab = (from d in GetProfessorPerLab()
+                              orderby d.Id descending
+                              select d).FirstOrDefault();
+            if (profPerLab != null)
+            {
+                maxID = profPerLab.Id + 1;
+            }
+            return maxID;
+        }
         #endregion
 
+
+
+        public IEnumerable<ProfessorPerLab> GetProfessorPerLabByProfId(int profId)
+        {
+            return context.ProfessorPerLabs.Where(p => p.ProfessorId == profId);
+        }
+
+
+        public void UpdateProfPerLab(int profId, List<int> labsIds)
+        {
+            try
+            {
+                List<ProfessorPerLab> oldValues = context.ProfessorPerLabs.Where(p => p.ProfessorId == profId).ToList();
+                foreach (var item in oldValues)
+                {
+
+                    context.ProfessorPerLabs.Attach(item);
+                    context.ProfessorPerLabs.Remove(item);
+                    context.SaveChanges();
+
+                } 
+
+                foreach (var id in labsIds)
+                {
+               
+                    context.ProfessorPerLabs.Add(new ProfessorPerLab { Id = GenerateProfPerLabID(), LabId = id, ProfessorId = profId });
+                    context.SaveChanges();
+                }
+             
+            }
+            catch (Exception ex)
+            {
+                //Include catch blocks for specific exceptions first, 
+                //and handle or log the error as appropriate in each. 
+                //Include a generic catch block like this one last. 
+                throw ex;
+            }
+        }
+
+
+        public IEnumerable<ProfessorPerLab> GetProfessorPerLab()
+        {
+            return context.ProfessorPerLabs;
+        }
+
+
+        public void InsertProfPerLab(int profId, List<int> labsIds)
+        {
+            try
+            {
+            
+                foreach (var id in labsIds)
+                {
+
+                    context.ProfessorPerLabs.Add(new ProfessorPerLab { Id = GenerateProfPerLabID(), LabId = id, ProfessorId = profId });
+                    context.SaveChanges();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //Include catch blocks for specific exceptions first, 
+                //and handle or log the error as appropriate in each. 
+                //Include a generic catch block like this one last. 
+                throw ex;
+            }
+        }
     }
 }

@@ -65,7 +65,7 @@
                     <ul id="menu">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Departments">Departments</a></li>
-                         <li><a runat="server" href="~/DepartmentsAdd">Add Departments</a></li>
+                         <li><a runat="server" href="~/Professor">Professors</a></li>
                     </ul>
                 </nav>
             </div>

@@ -18,17 +18,17 @@
                     AutoGenerateColumns="false" Font-Names="Arial"
                     Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B"
                     HeaderStyle-BackColor="green" AllowPaging="true" ShowFooter="true"
-                   OnRowEditing="ProfessorsGridView_RowEditing"
+                    OnRowEditing="ProfessorsGridView_RowEditing"
                     OnRowUpdating="ProfessorsGridView_RowUpdating" OnRowCancelingEdit="ProfessorsGridView_RowCancelingEdit"
-                    PageSize="10" OnDataBinding="ProfessorsGridView_DataBinding" OnDataBound="ProfessorsGridView_DataBound">
+                    PageSize="10" OnRowDataBound="ProfessorsGridView_RowDataBound">
                     <Columns>
                         <asp:TemplateField ItemStyle-Width="30px" HeaderText="ProfessorID">
                             <ItemTemplate>
                                 <asp:Label ID="lblProfessorID" runat="server"
-                                    Text='<%# Eval("ProfessorID")%>'></asp:Label>
+                                    Text='<%# Eval("UserID")%>'></asp:Label>
                             </ItemTemplate>
-
                         </asp:TemplateField>
+
                         <asp:TemplateField ItemStyle-Width="100px" HeaderText="First Name">
                             <ItemTemplate>
                                 <asp:Label ID="lblProfessorFirstName" runat="server"
@@ -38,7 +38,9 @@
                                 <asp:TextBox ID="txtProfessorFirstName" runat="server"
                                     Text='<%# Eval("FirstName")%>'></asp:TextBox>
                             </EditItemTemplate>
-
+                            <FooterTemplate>
+                                <asp:TextBox ID="txtNewProfFirstName" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField ItemStyle-Width="100px" HeaderText="Last Name">
@@ -50,7 +52,9 @@
                                 <asp:TextBox ID="txtProfessorLastName" runat="server"
                                     Text='<%# Eval("LastName")%>'></asp:TextBox>
                             </EditItemTemplate>
-
+                              <FooterTemplate>
+                                <asp:TextBox ID="txtNewProfLastName" runat="server"></asp:TextBox>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-Width="100px" HeaderText="Start Date">
                             <ItemTemplate>
@@ -59,33 +63,40 @@
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:Calendar ID="calendarStartDate" runat="server"
-                                    Text='<%# Eval("HireDate")%>'></asp:Calendar>
+                                    Text='<%# Eval("HireDate")%>' SelectedDate='<%# Eval("HireDate")%>'></asp:Calendar>
                             </EditItemTemplate>
-
+                              <FooterTemplate>
+                                <asp:Calendar ID="cNewProfHireDate" runat="server"></asp:Calendar>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-Width="100px" HeaderText="Labs">
                             <ItemTemplate>
                                 <asp:Label ID="lblLabs" runat="server"></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:CheckBoxList  ID="chkLabs" runat="server" ></asp:CheckBoxList>
-                            
-                            </EditItemTemplate>
+                                <asp:CheckBoxList ID="chkLabs" runat="server"></asp:CheckBoxList>
 
+                            </EditItemTemplate>
+                             <FooterTemplate>
+                                <asp:CheckBoxList ID="chkLabsNewProf" runat="server"></asp:CheckBoxList>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="lnkRemove" runat="server"
-                                    CommandArgument='<%# Eval("ProfessorID")%>'
+                                    CommandArgument='<%# Eval("UserID")%>'
                                     OnClientClick="return confirm('Do you want to delete?')"
                                     Text="Delete" OnClick="lnkRemove_Click"></asp:LinkButton>
                             </ItemTemplate>
-
+                            <FooterTemplate>
+                                    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                            </FooterTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowEditButton="True" />
                     </Columns>
                     <AlternatingRowStyle BackColor="#C2D69B" />
                 </asp:GridView>
+            
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ProfessorsGridView" />

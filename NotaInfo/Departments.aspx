@@ -70,4 +70,5 @@
             </Triggers>
         </asp:UpdatePanel>
     </div>
+    <asp:HyperLink NavigateUrl="/DepartmentsAdd" Text="Add a department" runat="server"></asp:HyperLink>
 </asp:Content>
