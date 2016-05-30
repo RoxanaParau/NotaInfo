@@ -18,7 +18,7 @@ namespace NotaInfo.DAL
         IEnumerable<User> GetProfessors();
         IEnumerable<User> GetProfessorByName( string nameSearchString);
         void InsertProfessor(User professor);
-        void DeleteProfessor(User professor);
+        void DeleteProfessor(int professorID);
         void UpdateProfessor(User professor);
 
         IEnumerable<User> GetStudents();

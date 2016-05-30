@@ -126,10 +126,11 @@ namespace NotaInfo.DAL
             }
         }
 
-        public void DeleteProfessor(User professor)
+        public void DeleteProfessor(int professorID)
         {
             try
             {
+                User professor = context.Users1.FirstOrDefault(p => p.UserID == professorID);
                 context.Users1.Attach(professor);
                 context.Users1.Remove(professor);
                 context.SaveChanges();
